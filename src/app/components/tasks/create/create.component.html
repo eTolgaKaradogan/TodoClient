@@ -1,0 +1,29 @@
+<div class="container">
+    <mat-card class="card">
+    <mat-card-content>
+        <mat-form-field class="example-full-width">
+            <mat-label>Başlık</mat-label>
+            <input matInput #message maxlength="256" #txtTitle id="titleInput">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Açıklama</mat-label>
+            <input matInput #message maxlength="256" #txtDescription id="descriptionInput">
+          </mat-form-field>
+
+          <div class="d-flex justify-content-between">
+            <div>
+            <mat-form-field id="dateRangeInCreateApp">
+              <mat-label>Tarih seçiniz</mat-label>
+              <input matInput [matDatepicker]="picker" [min]="minDate" [(ngModel)]="scheduledDate">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div>
+            <button mat-raised-button (click)="createTask(txtTitle, txtDescription)" (click)="txtTitle.value = ''" (click)="txtDescription.value = ''">Ekle</button>
+          </div>
+          </div>
+    </mat-card-content>
+</mat-card>
+</div>

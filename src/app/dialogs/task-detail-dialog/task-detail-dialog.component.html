@@ -1,0 +1,34 @@
+
+<mat-card class="card">
+  <mat-card-content>
+      <mat-form-field class="example-full-width">
+          <mat-label>Başlık</mat-label>
+          <input matInput maxlength="256" #txtTitle value="{{task.title}}" [disabled]="task.completedDate ? true : false">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Açıklama</mat-label>
+          <input matInput maxlength="256" #txtDescription value="{{task.description}}" [disabled]="task.completedDate ? true : false">
+        </mat-form-field>
+        <div class="d-flex justify-content-between">
+          <mat-form-field>
+            <mat-label>Görev Tarihi</mat-label>
+            <input matInput [matDatepicker]="picker" [min]="minDate" value="{{task.scheduledDate}}" [(ngModel)]="scheduledDate" [disabled]="task.completedDate ? true : false">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field *ngIf="task.completedDate">
+            <mat-label>Tamamlanma Tarihi</mat-label>
+            <input matInput [matDatepicker]="picker" [min]="minDate" value="{{task.completedDate}}" disabled>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div mat-dialog-actions>
+            <button mat-button (click)="close()">Kapat</button>
+            <button mat-button [mat-dialog-close]="data" (click)="update(txtTitle, txtDescription)" cdkFocusInitial [hidden]="task.completedDate">Güncelle</button>
+          </div>
+      </div>
+  </mat-card-content>
+</mat-card>
+
+

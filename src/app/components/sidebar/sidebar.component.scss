@@ -1,0 +1,20 @@
+  div.main {
+    height: 100vh;
+    height: -webkit-fill-available;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  h6 {
+    padding-left: 7px;
+    padding-top: 15px;
+  }
+
+  .a {
+    cursor :pointer
+  }
+
+  .divider {
+    top:10px;
+  }

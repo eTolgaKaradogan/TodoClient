@@ -1,0 +1,38 @@
+<div class="modal modal-signin position-static d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header p-5 pb-4 border-bottom-0">
+          <h1 class="fw-bold mb-0 fs-2">Kayıt Ol</h1>
+        </div>
+        <div class="modal-body p-5 pt-0">
+          <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control rounded-3" id="nameSurname" formControlName="nameSurname" placeholder="Ad Soyad" [ngClass]="{'is-invalid': submitted && component.nameSurname.errors}">
+                <small *ngIf="submitted && component.nameSurname.errors?.required">Lütfen ad soyad giriniz!</small>
+                <small *ngIf="submitted && (component.nameSurname.errors?.maxlength || component.nameSurname.errors?.minlength)">Lütfen 3 ile 50 karakter arası bir değer giriniz.</small>
+                <small *ngIf="submitted && component.nameSurname.errors?.required">Lütfen ad soyad giriniz!</small>
+                <label for="nameSurname">Ad Soyad</label>
+              </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control rounded-3" id="email" formControlName="email" placeholder="name@example.com" [ngClass]="{'is-invalid': submitted && component.email.errors}">
+              <small *ngIf="submitted && (component.email.errors?.required || component.email.errors?.email)">Lütfen uygun bir e-mail adresi giriniz!</small>
+              <label for="email">Email Adresi</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control rounded-3" id="password" formControlName="password" placeholder="Password" [ngClass]="{'is-invalid': submitted && component.password.errors}">
+              <small *ngIf="submitted && component.password.errors?.required">Lütfen şifre giriniz!</small>
+              <label for="password">Şifre</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control rounded-3" id="passwordConfirm" formControlName="passwordConfirm" placeholder="Password Confirm" [ngClass]="{'is-invalid': submitted && component.passwordConfirm.errors}">
+                <small *ngIf="submitted && form.hasError('notSame')">Lütfen şifreyi doğrulanıyınız!</small>
+                <label for="passwordConfirm">Şifre Tekrar</label>
+              </div>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Kayıt Ol</button>
+            <hr class="my-4">
+            <a class="w-100 mb-2 btn btn-lg rounded-3 btn-secondary" href="/login">Giriş Yap</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,22 @@
+
+    <div class="container">
+            <div class="mat-elevation-z8">
+              <mat-list>
+                <mat-list-item *ngFor="let task of tasks | searchFilter: searchForm?.value?.search" >
+                  <span matListItemTitle>{{task.title}}</span>
+                  <span matListItemLine>{{task.description}}</span>
+                  <button mat-icon-button matListItemMeta (click)="details(task.id)">
+                    <mat-icon>info</mat-icon>
+                 </button>
+                  <button mat-icon-button matListItemMeta (click)="delete(task.id, $event)">
+                    <mat-icon>delete</mat-icon>
+                 </button>
+                  <button mat-icon-button matListItemMeta (click)="completeTask(task.id, $event)">
+                    <mat-icon>task_alt</mat-icon>
+                 </button>
+                  <mat-divider [inset]="true" ></mat-divider>
+                </mat-list-item>
+              </mat-list>
+              
+        </div>
+    </div>

@@ -1,0 +1,25 @@
+<div class="modal modal-signin position-static d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header p-5 pb-4 border-bottom-0">
+          <h1 class="fw-bold mb-0 fs-2">Giriş Yap</h1>
+        </div>
+        <div class="modal-body p-5 pt-0">
+            <div class="form-floating mb-3">
+              <input #txtEmail type="email" class="form-control rounded-3" id="email" placeholder="name@example.com">
+              <label for="email">Email</label>
+              <small></small>
+            </div>
+            <div class="form-floating mb-3">
+              <input #txtPassword type="password" class="form-control rounded-3" id="password" placeholder="Password">
+              <label for="password">Şifre</label>
+              <small></small>
+            </div>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" (click)="login(txtEmail.value, txtPassword.value)">Giriş Yap</button>
+            <hr class="my-4">
+            <a class="w-100 mb-2 btn btn-md rounded-3 btn-secondary" routerLink="/password-reset">Şifremi Unuttum</a>
+            <a class="w-100 mb-2 btn btn-md rounded-3 btn-secondary" routerLink="/register">Kayıt Ol</a>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,32 @@
+<div class="main d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
+    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <h6>{{nameSurname}}</h6>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a routerLink="tasks" class="nav-link link-body-emphasis" routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+          <svg class="bi pe-none me-2" width="16" height="16"></svg>
+          Yapılacaklar
+        </a>
+      </li>
+      <li>
+        <a routerLink="tasks/today" class="nav-link link-body-emphasis" routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+          <svg class="bi pe-none me-2" width="16" height="16"></svg>
+          Bugün
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="tasks/completeds" class="nav-link link-body-emphasis" routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+          <svg class="bi pe-none me-2" width="16" height="16"></svg>
+          Tamamlananlar
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div>
+      <button class="btn btn-outline-dark w-100 mb-2 btn btn-md rounded-3" (click)="signOut()" type="button">
+        <strong>Çıkış</strong>
+      </button>
+    </div>
+  </div>
