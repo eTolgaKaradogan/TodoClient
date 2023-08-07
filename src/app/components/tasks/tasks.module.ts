@@ -18,6 +18,10 @@ import { DialogsModule } from 'src/app/dialogs/dialogs.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchFilterModule } from 'src/app/pipes/search-filter/search-filter.module';
 import { CreateModule } from './create/create.module';
+import { DeleteDirective } from 'src/app/directives/delete.directive';
+import { CompleteDirective } from 'src/app/directives/complete.directive';
+import { DetailsDirective } from 'src/app/directives/details.directive';
+import { DirectivesModule } from 'src/app/directives/directives.module';
 
 const routes: Routes = [
   {
@@ -43,7 +47,7 @@ const routes: Routes = [
     TasksComponent,
     ListComponent,
     HeaderComponent,
-    CompletedListComponent
+    CompletedListComponent,
   ],
   imports: [
     CommonModule,
@@ -60,7 +64,8 @@ const routes: Routes = [
     DialogsModule,
     ReactiveFormsModule,
     SearchFilterModule,
-    CreateModule
+    CreateModule,
+    DirectivesModule
   ],
 })
 export class TasksModule { }

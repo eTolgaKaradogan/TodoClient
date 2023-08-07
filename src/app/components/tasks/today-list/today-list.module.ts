@@ -11,6 +11,8 @@ import { DialogsModule } from 'src/app/dialogs/dialogs.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchFilterModule } from 'src/app/pipes/search-filter/search-filter.module';
 import { CreateModule } from '../create/create.module';
+import { DeleteDirective } from 'src/app/directives/delete.directive';
+import { DirectivesModule } from 'src/app/directives/directives.module';
 
 const routes: Routes = [
   {path: '', component: TodayListComponent}
@@ -18,7 +20,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    TodayListComponent,
+    TodayListComponent
 ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ const routes: Routes = [
     DialogsModule,
     ReactiveFormsModule,
     SearchFilterModule,
-    CreateModule
+    CreateModule,
+    DirectivesModule
   ]
 })
 export class TodayListModule { }

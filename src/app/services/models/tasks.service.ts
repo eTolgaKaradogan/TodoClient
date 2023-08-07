@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { first, firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { CreateTask } from 'src/app/contracts/tasks/create-task';
 import { ListTask } from 'src/app/contracts/tasks/list-tasks';
 import { Task } from 'src/app/contracts/tasks/task';

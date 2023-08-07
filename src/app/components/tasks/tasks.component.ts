@@ -15,6 +15,7 @@ export class TasksComponent implements OnInit {
   async ngOnInit() {
     if (!(await this.authService.isAuthenticated)) {
       this.router.navigate(['/login']);
+      // auth guard.
     }
   }
   

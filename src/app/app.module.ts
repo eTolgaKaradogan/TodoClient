@@ -11,9 +11,6 @@ import { JwtModule } from '@auth0/angular-jwt';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ToastrModule } from 'ngx-toastr';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { DatePipe } from '@angular/common';
-
-
 
 @NgModule({
   declarations: [

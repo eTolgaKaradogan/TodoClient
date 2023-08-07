@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, AfterContentChecked,Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -8,11 +8,8 @@ import { CustomToastrService, ToastrMessageType } from 'src/app/services/custom-
 import { DialogService } from 'src/app/services/dialog.service';
 import { TasksService } from 'src/app/services/models/tasks.service';
 import dateFormat from "dateformat";
-import { TaskDetailDialogComponent } from 'src/app/dialogs/task-detail-dialog/task-detail-dialog.component';
-import { DeleteDialogComponent, DeleteState } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
-import { delay, startWith, Subscription } from 'rxjs';
+import { delay, Subscription } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
-declare var $ : any;
 
 @Component({
   selector: 'app-completed-list',
@@ -23,8 +20,7 @@ export class CompletedListComponent extends BaseComponent implements OnInit, OnD
   private searchSub: Subscription;
   private datesSub: Subscription;
   
-  constructor(private taskService: TasksService, spinner: NgxSpinnerService, private toastrService: CustomToastrService, public dialog: MatDialog, private dialogService: DialogService, 
-    private commonService: CommonService) {
+  constructor(private taskService: TasksService, spinner: NgxSpinnerService, private toastrService: CustomToastrService, private commonService: CommonService) {
     super(spinner)
 
     this.searchSub = this.commonService.getSearchUpdate().pipe(delay(0)).subscribe(async searchForm => {
@@ -73,29 +69,4 @@ export class CompletedListComponent extends BaseComponent implements OnInit, OnD
       this.tasks = data.tasks;
   };
 }
-
-  async details(id: string) {
-    this.dialogService.openDialog({
-      componentType: TaskDetailDialogComponent,
-      data: id,
-      options: {
-        width: '1000px'
-      }, afterClosed:async () => {
-        await this.getTasks(null, null);
-      }
-    });
-  }
-    delete(id: string, event) {
-      this.dialogService.openDialog({
-        componentType: DeleteDialogComponent,
-        data: DeleteState.Yes,
-        options: {
-          width: '300px'
-        }, afterClosed: async () => {
-          await this.taskService.delete(id);
-          const img: HTMLImageElement = event.srcElement;
-          $(img.parentElement.parentElement).fadeOut(2000);
-        }
-      })
-    }
-  }
+}
