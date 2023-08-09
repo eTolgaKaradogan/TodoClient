@@ -18,10 +18,8 @@ import { DialogsModule } from 'src/app/dialogs/dialogs.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchFilterModule } from 'src/app/pipes/search-filter/search-filter.module';
 import { CreateModule } from './create/create.module';
-import { DeleteDirective } from 'src/app/directives/delete.directive';
-import { CompleteDirective } from 'src/app/directives/complete.directive';
-import { DetailsDirective } from 'src/app/directives/details.directive';
 import { DirectivesModule } from 'src/app/directives/directives.module';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -32,10 +30,10 @@ const routes: Routes = [
       {
         path: 'tasks/today',
         loadChildren: () => import(`./today-list/today-list.module`)
-          .then((mod) => mod.TodayListModule)
+          .then((mod) => mod.TodayListModule), canActivate: [AuthGuard]
       },
       {
-        path: 'tasks/completeds', component: CompletedListComponent
+        path: 'tasks/completeds', component: CompletedListComponent, canActivate: [AuthGuard]
       }
     ]
   },

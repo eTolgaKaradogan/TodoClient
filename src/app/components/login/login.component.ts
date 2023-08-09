@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent } from 'src/app/base/base.component';
 import { AuthService } from 'src/app/services/auth.service';
-import { CustomToastrService, ToastrMessageType } from 'src/app/services/custom-toastr.service';
 import { UserAuthService } from 'src/app/services/models/user-auth.service';
 
 @Component({
@@ -13,7 +12,7 @@ import { UserAuthService } from 'src/app/services/models/user-auth.service';
 })
 export class LoginComponent extends BaseComponent{
   constructor(private userAuthService: UserAuthService, spinner: NgxSpinnerService, private authService: AuthService, 
-    private router: Router, private toastrService: CustomToastrService) {
+    private router: Router, private activatedRoute: ActivatedRoute) {
     super(spinner)
   }
 
@@ -21,15 +20,14 @@ export class LoginComponent extends BaseComponent{
     this.showSpinner();
     await this.userAuthService.login(txtEmail, txtPassword, () => {
       this.authService.identityCheck();
-      this.toastrService.message("başarılı", "", {
-        messageType: ToastrMessageType.Success
+      this.activatedRoute.queryParams.subscribe(params => {
+        const returnedUrl: string = params["returnedUrl"];
+        if(returnedUrl)
+        this.router.navigate([returnedUrl]).then(() => {
+          window.location.reload();
+        })
       })
-      this.router.navigate(['/tasks'])
-        .then(() => {
-      window.location.reload();
     });
       this.hideSpinner();
-    })
+    }
   }
-
-}

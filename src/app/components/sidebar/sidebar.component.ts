@@ -19,6 +19,7 @@ export class SidebarComponent extends BaseComponent implements OnInit{
 
   async ngOnInit(){
     this.isLoggedIn = await this.authService.identityCheck();
+    debugger;
   }
 
   getNameSurname() {
